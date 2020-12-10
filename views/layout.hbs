@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boredom | Portal</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.bundle.js"></script>
+
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="/stylesheets/hover.css"/>
+</head>
+<body class="bg-dark animate__animated animate__fadeIn user-select-none text-center align-bottom" style="margin-top: 150px">
+<div class="container text-light">
+    <img src="images/logo.png" class="w-auto h-auto hvr-grow">
+
+    <div onclick="copyIP()" style="font-size: 25px; display: inline-block; vertical-align: middle" data-toggle="tooltip" data-placement="top" title="Click to copy the server IP">
+        Join <strong>{{players}}</strong> other players on
+        <div class="font-weight-bolder" style="font-size: 35px;">
+            play.boredommc.com
+        </div>
+    </div>
+
+    <div class="p-2 mt-5">
+        <a href="https://discord.gg/ScBT8xGyK2"><img src="images/discord-brands.svg" data-toggle="tooltip" data-placement="bottom" title="Click to join our discord" class="hvr-grow" style="margin-left: 100px;width: 128px; height: 128px; color: white"></a>{{#if mobile}}<br>{{/if}}
+        <a href="http://store.boredommc.com"><img src="images/shopping-cart.svg" data-toggle="tooltip" data-placement="bottom" title="Click to go to our store" class="hvr-grow" style="margin-left: 100px;width: 128px; height: 128px; color: white"></a>{{#if mobile}}<br>{{/if}}
+        <a href="http://dynmap.boredommc.com"><img src="images/map.svg" data-toggle="tooltip" data-placement="bottom" title="Click to view our dynmap" class="hvr-grow" style="margin-left: 100px;width: 128px; height: 128px; color: white"></a>{{#if mobile}}<br>{{/if}}
+    </div>
+</div>
+
+<div class="modal" id="ipconfirm" tabindex="-1" role="dialog">
+    <div class="modal-dialog w-25" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="font-family: 'Roboto', sans-serif;">
+                You have copied the server IP
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    function copyIP() {
+        $('#ipconfirm').modal('show');
+
+        const el = document.createElement("textarea");
+        el.value = "play.boredommc.com";
+        document.body.append(el);
+        el.select();
+        document.execCommand("copy")
+        document.body.removeChild(el);
+
+        $("#ipconfirm").slideUp(1200, function () {
+            $('#ipconfirm').modal('hide');
+        });
+    }
+</script>
+</body>
+</html>
