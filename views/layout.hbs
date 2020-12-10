@@ -4,22 +4,21 @@
     <title>Boredom | Portal</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="javascripts/particles.js"></script>
     <script src="javascripts/bootstrap.bundle.js"></script>
 
     <link rel="icon" href="images/favicon.png" type="image/png">
-
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel="stylesheet" href="/stylesheets/hover.css"/>
 </head>
-<body class="bg-dark animate__animated animate__fadeIn user-select-none text-center align-bottom" style="margin-top: 150px">
-<div class="container text-light">
+<body style="background-color: #131517">
+<div id="particles"></div>
+<div class="container text-light animate__animated animate__fadeIn user-select-none text-center align-bottom" style="margin-top: 150px;">
     <img src="images/logo.png" class="w-auto h-auto hvr-grow">
 
     <div onclick="copyIP()" style="font-size: 25px; display: inline-block; vertical-align: middle" data-toggle="tooltip" data-placement="top" title="Click to copy the server IP">
@@ -39,14 +38,21 @@
 <div class="modal" id="ipconfirm" tabindex="-1" role="dialog">
     <div class="modal-dialog w-25" role="document">
         <div class="modal-content">
-            <div class="modal-body" style="font-family: 'Roboto', sans-serif;">
-                You have copied the server IP
+            <div class="modal-body text-center" style="font-family: 'Roboto', sans-serif;">
+                You have copied the server address
             </div>
         </div>
     </div>
 </div>
 
 <script>
+
+    $(document).ready(function() {
+        particlesJS.load('particles', 'json/particles.json', () => {
+            console.log("particles.js successfully loaded")
+        })
+    });
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
@@ -61,7 +67,7 @@
         document.execCommand("copy")
         document.body.removeChild(el);
 
-        $("#ipconfirm").slideUp(1200, function () {
+        $("#ipconfirm").slideUp(1000, function () {
             $('#ipconfirm').modal('hide');
         });
     }

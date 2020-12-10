@@ -13,8 +13,9 @@
     "express-useragent": "^1.0.15",
     "hbs": "~4.0.4",
     "hover.css": "^2.3.2",
+    "minecraft-server-status": "^1.0.1",
     "minecraft-server-util": "^3.4.0",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.6"
   }
 }

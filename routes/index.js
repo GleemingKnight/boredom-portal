@@ -6,10 +6,10 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  minecraftServerUtil.status("play.boredommc.com")
-      .then((response) => {
-        res.render('index', { players: response.onlinePlayers, mobile: useragent.isMobile});
-      });
+    minecraftServerUtil.status("play.boredommc.com")
+        .then((response) => {
+            res.render('index', { players: response.onlinePlayers, mobile: useragent.isMobile});
+        });
 });
 
 module.exports = router;
